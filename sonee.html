@@ -18,4 +18,18 @@ player.ready(function() {
 
   player.play();
 });
+
+videojs.Hls.xhr.beforeRequest = function(options) {
+  /*
+   * Modifications to requests that will affect every player.
+   */
+
+    if (options.headers == undefined){
+       options.headers = {}
+    }
+    options.headers["x-playback-session-id"] = "1234"
+   
+    return options;
+  };
+
 </script>
